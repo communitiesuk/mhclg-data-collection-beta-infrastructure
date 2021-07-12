@@ -9,3 +9,13 @@ variable "default_tags" {
     stage                  = "beta"
   }
 }
+
+variable "database_username" {
+  type      = string
+  sensitive = true
+}
+
+variable "database_password" {
+  type      = string
+  sensitive = true
+}

@@ -180,8 +180,8 @@ resource "aws_db_instance" "postgres" {
   engine                  = "postgres"
   engine_version          = "13.3"
   storage_encrypted       = true
-  username                = "test-username"
-  password                = "test-password"
+  username                = var.database_username
+  password                = var.database_password
   port                    = 5432
   instance_class          = "db.t2.micro"
   db_subnet_group_name    = aws_db_subnet_group.postgres_subnet_group.name
