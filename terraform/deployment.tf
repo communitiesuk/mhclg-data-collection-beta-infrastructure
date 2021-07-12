@@ -129,7 +129,7 @@ resource "aws_iam_role" "ecs_agent" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_agent" {
-  role       = "aws_iam_role.ecs_agent"
+  role       = aws_iam_role.ecs_agent.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
 }
 
@@ -141,7 +141,7 @@ resource "aws_iam_instance_profile" "ecs_agent" {
 }
 
 resource "aws_launch_configuration" "ecs_launch_config" {
-  image_id             = "ami-032930428bf1abbff"
+  image_id             = "ami-0d9feb0e9cd3526e4"
   iam_instance_profile = aws_iam_instance_profile.ecs_agent.name
   security_groups      = [aws_security_group.ecs_security_group.id]
   user_data            = "#!/bin/bash\necho ECS_Cluster=data-collector-cluster >> /etc/ecs/ecs.config"
@@ -171,7 +171,7 @@ resource "aws_db_subnet_group" "postgres_subnet_group" {
 }
 
 resource "aws_db_instance" "postgres" {
-  name                    = "data-collector-postgres"
+  name                    = "DataCollectorPostgres"
   allocated_storage       = 5 # In gigabytes
   backup_retention_period = 2
   backup_window           = "01:00-01:30"
@@ -179,11 +179,11 @@ resource "aws_db_instance" "postgres" {
   multi_az                = true
   engine                  = "postgres"
   engine_version          = "13.3"
-  storage_encrypted       = true
+  storage_encrypted       = false
   username                = var.database_username
   password                = var.database_password
   port                    = 5432
-  instance_class          = "db.t2.micro"
+  instance_class          = "db.t3.micro"
   db_subnet_group_name    = aws_db_subnet_group.postgres_subnet_group.name
   vpc_security_group_ids  = [aws_security_group.rds_security_group.id, aws_security_group.ecs_security_group.id]
 
