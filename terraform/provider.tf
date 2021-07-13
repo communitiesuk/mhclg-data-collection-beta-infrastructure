@@ -11,7 +11,7 @@ terraform {
     bucket         = "datacollection-dev-terraform-remote-state-storage"
     encrypt        = true
     dynamodb_table = "DataCollection-Dev-terraform-state-lock-dynamo"
-    key            = "state"
+    key            = "state-beta"
     region         = "eu-west-2"
   }
 
