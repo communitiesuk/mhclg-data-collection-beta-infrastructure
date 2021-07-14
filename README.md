@@ -12,3 +12,4 @@ Pre-requisites
 
 - Ruby
 - Rails
+- Postgres
