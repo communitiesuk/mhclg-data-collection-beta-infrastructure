@@ -1,3 +1,0 @@
-terraform/.terraform/*
-data-collector/node_modules/*
-data-collector/tmp/*
