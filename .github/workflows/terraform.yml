@@ -49,7 +49,7 @@ jobs:
       run: terraform plan
 
     # On push to main, build or change infrastructure according to Terraform configuration files
-    # - name: Terraform Apply
-    #   working-directory: ./terraform
-    #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    #   run: terraform apply -auto-approve
+    - name: Terraform Apply
+      working-directory: ./terraform
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform apply -auto-approve
