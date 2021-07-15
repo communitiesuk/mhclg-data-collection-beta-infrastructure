@@ -5,7 +5,7 @@ resource "aws_launch_configuration" "ecs_launch_config" {
   security_groups      = [aws_security_group.ecs_security_group.id]
   user_data            = "#!/bin/bash\necho ECS_Cluster=ecs-cluster >> /etc/ecs/ecs.config" # Tell the ECS agent which cluster to join
 
-  instance_type        = "t2.micro"
+  instance_type = "t2.micro"
 }
 
 resource "aws_autoscaling_group" "ecs_asg" {
