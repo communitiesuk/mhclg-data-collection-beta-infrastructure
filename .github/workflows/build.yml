@@ -1,6 +1,9 @@
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Terraform"]
+    branches: [main]
+    types:
+      - completed
 
 name: Build Docker Image and Deploy to Amazon ECS
 
@@ -19,6 +22,7 @@ defaults:
 
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Deploy
     runs-on: ubuntu-latest
     environment: 'Beta - Production'

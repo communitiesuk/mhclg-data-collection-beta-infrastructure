@@ -1,10 +1,12 @@
-[
-  {
-    "essential": true,
-    "memory": 512,
-    "name": "app",
-    "cpu": 2,
-    "image": "${REPOSITORY_URL}:latest",
-    "environment": []
-  }
-]
+{
+  "containerDefinitions": [
+    {
+      "name": "app",
+      "image": "${REPOSITORY_URL}:latest",
+      "memory": 512,
+      "cpu": 2,
+      "essential": true,
+      "environment": ["Beta - Production"]
+    }
+  ]
+}
