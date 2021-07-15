@@ -56,6 +56,7 @@ jobs:
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
     - name: Download task definition
+      id: task-def-download
       run: |
         aws ecs describe-task-definition --task-definition app --query taskDefinition > task-definition.json
 
@@ -64,7 +65,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: task_definition.json
+        task-definition: ${{ steps.task-def-download.outputs.task-definition.json }}
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
 

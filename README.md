@@ -12,3 +12,10 @@ All code can be found in `/terraform`
 ## Web App
 
 The main codebase is a Ruby on Rails app that can be found in [data-collector](data-collector)
+
+## CI/CD
+
+When a commit is made to `main` the following Github action workflows are triggered:
+
+1. Terraform - checks Infrastructure state and makes any required changes
+2. Build - builds a docker image and deploys it to the ECR registry (created by terraform). Then updates the ECS task definition (created by terraform).
