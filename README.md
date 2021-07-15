@@ -15,7 +15,7 @@ The main codebase is a Ruby on Rails app that can be found in [data-collector](d
 
 ## CI/CD
 
-When a commit is made to `main` the following Github action workflows are triggered:
+When a commit is made to `main` the following Github action jobs are triggered:
 
 1. Terraform - checks Infrastructure state and makes any required changes
-2. Build - builds a docker image and deploys it to the ECR registry (created by terraform). Then updates the ECS task definition (created by terraform).
+2. Deploy - builds a docker image and deploys it to the ECR registry (created by terraform). Then updates the ECS task definition (created by terraform).
