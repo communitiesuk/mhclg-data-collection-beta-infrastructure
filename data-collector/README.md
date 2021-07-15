@@ -1,24 +1,33 @@
-# README
+# Data Collection App
+This is the codebase for the Ruby/Rails app that will handle the submission of Lettings and Sales of Social Housing in England data.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Required Setup
 
-Things you may want to cover:
+Pre-requisites
 
-* Ruby version
+- Ruby
+- Rails
+- Postgres
 
-* System dependencies
 
-* Configuration
+### Setup Quickstart
 
-* Database creation
+From the data-collector directory
 
-* Database initialization
+```
+rake db:create
+rails s
+```
+This starts the rails server on localhost:3000
 
-* How to run the test suite
+or using Docker
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+docker-compose build
+docker-compose run --rm app rails db:create
+docker-compose up
+```
 
-* Deployment instructions
+This exposes the rails server on localhost:8080.
 
-* ...
+Note docker-compose runs the production docker image (RAILS_ENV=production) as the Dockerfile doesn't include development gems to keep the image size down.

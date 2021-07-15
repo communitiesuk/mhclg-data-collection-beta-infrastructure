@@ -21,7 +21,7 @@ RUN gem install bundler:2.2.3 --no-document
 # Install gems defined in Gemfile
 COPY .ruby-version Gemfile Gemfile.lock /app/
 
-RUN bundle config set --local without "development test"
+RUN bundle config set without "development test"
 ARG BUNDLE_FLAGS="--jobs=4 --no-binstubs --no-cache"
 RUN bundle install ${BUNDLE_FLAGS}
 
