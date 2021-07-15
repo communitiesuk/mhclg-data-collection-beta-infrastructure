@@ -1,0 +1,4 @@
+# Tell the ECS agent which cluster to join
+
+bootcmd:
+ - cloud-init-per instance $(echo "ECS_CLUSTER=${cluster_name}" >> /etc/ecs/ecs.config)

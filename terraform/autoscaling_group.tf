@@ -1,9 +1,27 @@
+data "aws_ami" "ecs_optimized" {
+  most_recent = true
+  owners      = ["591542846629"] # AWS
+
+  filter {
+    name   = "name"
+    values = ["*amazon-ecs-optimized"]
+  }
+}
+
+data "template_file" "ecs_instance_boot_data" {
+  template = file("ecs_instance_boot_data.yml")
+
+  vars = {
+    cluster_name = "ecs-cluster"
+  }
+}
+
 resource "aws_launch_configuration" "ecs_launch_config" {
-  image_id             = "ami-0d9feb0e9cd3526e4"
+  name                 = "ecs-ecs_launch_config"
+  image_id             = data.aws_ami.ecs_optimized.id
   iam_instance_profile = aws_iam_instance_profile.ecs_agent.name
-  name                 = "ecs-cluster"
   security_groups      = [aws_security_group.ecs_security_group.id]
-  user_data            = "#!/bin/bash\necho ECS_Cluster=ecs-cluster >> /etc/ecs/ecs.config" # Tell the ECS agent which cluster to join
+  user_data            = data.template_file.ecs_instance_boot_data.rendered
 
   instance_type = "t2.micro"
 }
