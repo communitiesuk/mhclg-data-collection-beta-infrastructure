@@ -17,7 +17,7 @@ data "template_file" "ecs_instance_boot_data" {
 }
 
 resource "aws_launch_configuration" "ecs_launch_config" {
-  name                 = "ecs-ecs_launch_config"
+  name                 = "ecs-launch-config"
   image_id             = data.aws_ami.ecs_optimized.id
   iam_instance_profile = aws_iam_instance_profile.ecs_agent.name
   security_groups      = [aws_security_group.ecs_security_group.id]
