@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: container-repository
   ECS_SERVICE: app
   ECS_CLUSTER: ecs-cluster
-  ECS_TASK_DEFINITION: ../terraform/task_definition.json.tpl
+  ECS_TASK_DEFINITION: ./terraform/task_definition.json.tpl
   CONTAINER_NAME: app  # set this to the name of the container in the containerDefinitions section of your task definition
 
 defaults:
