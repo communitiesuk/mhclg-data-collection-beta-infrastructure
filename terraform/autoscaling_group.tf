@@ -8,8 +8,8 @@ data "aws_ami" "ecs_optimized" {
   }
 
   filter {
-      name   = "virtualization-type"
-      values = ["hvm"]
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 }
 
