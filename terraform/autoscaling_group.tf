@@ -13,11 +13,11 @@ data "aws_ami" "ecs_optimized" {
   }
 }
 
-data "template_file" "ecs_instance_boot_data" {
-  template = file("ecs_instance_boot_data.yml")
+data "template_file" "user_data" {
+  template = file("user_data.tpl")
 
   vars = {
-    cluster_name = "ecs-cluster"
+    cluster_name = resource.aws_ecs_cluster.ecs_cluster.name
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_launch_configuration" "ecs_launch_config" {
   image_id             = data.aws_ami.ecs_optimized.id
   iam_instance_profile = aws_iam_instance_profile.ecs_agent.name
   security_groups      = [aws_security_group.ecs_security_group.id]
-  user_data            = data.template_file.ecs_instance_boot_data.rendered
+  user_data            = data.template_file.user_data.rendered
 
   instance_type = "t2.micro"
 }
