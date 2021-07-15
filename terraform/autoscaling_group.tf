@@ -4,7 +4,12 @@ data "aws_ami" "ecs_optimized" {
 
   filter {
     name   = "name"
-    values = ["*amazon-ecs-optimized"]
+    values = ["amzn2-ami-ecs-hvm-2.0.20210708-x86_64-ebs"]
+  }
+
+  filter {
+      name   = "virtualization-type"
+      values = ["hvm"]
   }
 }
 
