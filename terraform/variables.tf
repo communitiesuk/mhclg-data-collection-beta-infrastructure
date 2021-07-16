@@ -20,6 +20,15 @@ variable "database_password" {
   sensitive = true
 }
 
+variable "rails_master_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "database_name" {
+  default = "data_collector"
+}
+
 variable "number_of_public_subnets" {
   default = 2
 }
