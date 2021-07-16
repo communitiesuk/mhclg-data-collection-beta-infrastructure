@@ -9,7 +9,6 @@ resource "aws_alb_target_group" "alb_target_group" {
 
 resource "aws_alb" "alb" {
   name            = "alb"
-  subnets         = [aws_subnet.pub_subnet.*.id]
   security_groups = [aws_security_group.lb_security_group.id]
 
   tags = var.default_tags
