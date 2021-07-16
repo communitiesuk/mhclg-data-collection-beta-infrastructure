@@ -22,11 +22,12 @@ data "template_file" "user_data" {
 }
 
 resource "aws_launch_configuration" "ecs_launch_config" {
-  name                 = "ecs-launch-config"
-  image_id             = data.aws_ami.ecs_optimized.id
-  iam_instance_profile = aws_iam_instance_profile.ecs_agent.name
-  security_groups      = [aws_security_group.ecs_security_group.id]
-  user_data            = data.template_file.user_data.rendered
+  name                        = "ecs-launch-config"
+  image_id                    = data.aws_ami.ecs_optimized.id
+  iam_instance_profile        = aws_iam_instance_profile.ecs_agent.name
+  security_groups             = [aws_security_group.ecs_security_group.id]
+  user_data                   = data.template_file.user_data.rendered
+  associate_public_ip_address = true
 
   instance_type = "t2.micro"
 }
