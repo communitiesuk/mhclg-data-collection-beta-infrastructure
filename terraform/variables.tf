@@ -26,7 +26,7 @@ variable "rails_master_key" {
 }
 
 variable "database_name" {
-  default = "data_collector"
+  default = "DataCollectorPostgres"
 }
 
 variable "number_of_public_subnets" {

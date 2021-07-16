@@ -6,7 +6,7 @@ resource "aws_db_subnet_group" "postgres_subnet_group" {
 }
 
 resource "aws_db_instance" "postgres" {
-  name                         = "DataCollectorPostgres"
+  name                         = var.database_name
   allocated_storage            = 5 # In gigabytes
   backup_retention_period      = 2
   backup_window                = "01:00-01:30"
