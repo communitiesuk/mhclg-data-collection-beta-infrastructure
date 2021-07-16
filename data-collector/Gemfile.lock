@@ -1,3 +1,50 @@
+GIT
+  remote: https://github.com/rspec/rspec-core.git
+  revision: beca9ba93cb71db91e2f37c4cc1bdbacdecd1025
+  branch: main
+  specs:
+    rspec-core (3.11.0.pre)
+      rspec-support (= 3.11.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-expectations.git
+  revision: dba67987c63f551d1bf0f7877f069fa8b72d0461
+  branch: main
+  specs:
+    rspec-expectations (3.11.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.11.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-mocks.git
+  revision: 17cf86ab61544b93232c4e9ca9784ab212dccbf6
+  branch: main
+  specs:
+    rspec-mocks (3.11.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.11.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-rails.git
+  revision: e68175d1d6f3e7a70afca7a76a133039e3efd1ec
+  branch: main
+  specs:
+    rspec-rails (5.1.0.pre)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      rspec-core (= 3.11.0.pre)
+      rspec-expectations (= 3.11.0.pre)
+      rspec-mocks (= 3.11.0.pre)
+      rspec-support (= 3.11.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-support.git
+  revision: 28526172c42302858c18681d7d7580490d885b4d
+  branch: main
+  specs:
+    rspec-support (3.11.0.pre)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,6 +114,7 @@ GEM
     byebug (11.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    diff-lcs (1.4.4)
     erubi (1.10.0)
     ffi (1.15.3)
     globalid (0.4.2)
@@ -93,6 +141,8 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
+    nokogiri (1.11.7-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
@@ -166,6 +216,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-darwin-19
   x86_64-linux
 
 DEPENDENCIES
@@ -178,6 +229,11 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
+  rspec-core!
+  rspec-expectations!
+  rspec-mocks!
+  rspec-rails!
+  rspec-support!
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
