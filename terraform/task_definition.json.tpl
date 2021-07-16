@@ -1,9 +1,9 @@
 [
   {
     "essential": true,
-    "memory": 512,
+    "memory": 254,
     "name": "app",
-    "cpu": 2,
+    "cpu": 1,
     "image": "${REPOSITORY_URL}:latest",
     "environment": []
   }
