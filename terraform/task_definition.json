@@ -7,27 +7,27 @@
     "image": "${REPOSITORY_URL}:latest",
     "environment": [
       {
-        "name": "DB_HOST"
+        "name": "DB_HOST",
         "value": "${DB_HOST}"
       },
       {
-        "name": "DB_DATABASE"
+        "name": "DB_DATABASE",
         "value": "${DB_DATABASE}"
       },
       {
-        "name": "DB_USERNAME"
+        "name": "DB_USERNAME",
         "value": "${DB_USERNAME}"
       },
       {
-        "name": "DB_PASSWORD"
+        "name": "DB_PASSWORD",
         "value": "${DB_PASSWORD}"
       },
       {
-        "name": "RAILS_ENV"
+        "name": "RAILS_ENV",
         "value": "${RAILS_ENV}"
       },
       {
-        "name": "RAILS_MASTER_KEY"
+        "name": "RAILS_MASTER_KEY",
         "value": "${RAILS_MASTER_KEY}"
       }
     ],
