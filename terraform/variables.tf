@@ -25,6 +25,10 @@ variable "rails_master_key" {
   sensitive = true
 }
 
+variable "rails_log_to_stdout" {
+  default = true
+}
+
 variable "database_name" {
   default = "DataCollectorPostgres"
 }

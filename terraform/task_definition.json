@@ -29,6 +29,10 @@
       {
         "name": "RAILS_MASTER_KEY",
         "value": "${RAILS_MASTER_KEY}"
+      },
+      {
+        "name": "RAILS_LOG_TO_STDOUT",
+        "value": "${RAILS_LOG_TO_STDOUT}"
       }
     ],
     "portMappings": [

@@ -7,13 +7,14 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 data "template_file" "task_definition_template" {
   template = file("task_definition.json")
   vars = {
-    REPOSITORY_URL   = replace(aws_ecr_repository.container_repository.repository_url, "https://", "")
-    DB_HOST          = aws_db_instance.postgres.endpoint
-    DB_DATABASE      = var.database_name
-    DB_USERNAME      = var.database_username
-    DB_PASSWORD      = var.database_password
-    RAILS_MASTER_KEY = var.rails_master_key
-    RAILS_ENV        = "production"
+    REPOSITORY_URL      = replace(aws_ecr_repository.container_repository.repository_url, "https://", "")
+    DB_HOST             = aws_db_instance.postgres.endpoint
+    DB_DATABASE         = var.database_name
+    DB_USERNAME         = var.database_username
+    DB_PASSWORD         = var.database_password
+    RAILS_MASTER_KEY    = var.rails_master_key
+    RAILS_ENV           = "production"
+    RAILS_LOG_TO_STDOUT = var.rails_log_to_stdout
   }
 }
 
