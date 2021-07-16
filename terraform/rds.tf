@@ -6,7 +6,7 @@ resource "aws_db_subnet_group" "postgres_subnet_group" {
 }
 
 resource "aws_db_instance" "postgres" {
-  name                         = var.database_name
+  name                         = "DataCollectorPostgres"
   allocated_storage            = 5 # In gigabytes
   backup_retention_period      = 2
   backup_window                = "01:00-01:30"
@@ -25,4 +25,27 @@ resource "aws_db_instance" "postgres" {
   vpc_security_group_ids       = [aws_security_group.rds_security_group.id, aws_security_group.ecs_security_group.id]
 
   tags = var.default_tags
+}
+
+provider "postgresql" {
+  host     = aws_db_instance.postgres.endpoint
+  port     = 5432
+  username = var.database_username
+  password = var.database_password
+}
+
+resource "postgresql_role" "application_role" {
+  name               = var.database_username
+  login              = true
+  password           = var.database_password
+  encrypted_password = true
+}
+
+resource "postgresql_database" "data_collector_db" {
+  name              = var.database_name
+  owner             = postgresql_role.application_role.name
+  template          = "template0"
+  lc_collate        = "C"
+  connection_limit  = -1
+  allow_connections = true
 }
