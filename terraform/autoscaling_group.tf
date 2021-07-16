@@ -30,6 +30,10 @@ resource "aws_launch_configuration" "ecs_launch_config" {
   associate_public_ip_address = true
 
   instance_type = "t2.micro"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_autoscaling_group" "ecs_asg" {
