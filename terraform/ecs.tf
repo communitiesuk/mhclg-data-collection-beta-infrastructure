@@ -5,7 +5,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 }
 
 data "template_file" "task_definition_template" {
-  template = file("task_definition.json.tpl")
+  template = file("task_definition.json")
   vars = {
     REPOSITORY_URL = replace(aws_ecr_repository.container_repository.repository_url, "https://", "")
   }
