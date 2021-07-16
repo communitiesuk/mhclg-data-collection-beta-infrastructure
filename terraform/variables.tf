@@ -19,3 +19,7 @@ variable "database_password" {
   type      = string
   sensitive = true
 }
+
+variable "number_of_public_subnets" {
+  default = 2
+}
