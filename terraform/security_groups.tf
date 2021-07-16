@@ -1,21 +1,21 @@
 resource "aws_security_group" "lb_security_group" {
-  name = "lb-sg"
+  name        = "lb-sg"
   description = "Controls access to the application Load Balancer"
-  vpc_id = aws_vpc.vpc.id
+  vpc_id      = aws_vpc.vpc.id
 
   tags = var.default_tags
 
   ingress {
-    protocol = "tcp"
-    from_port = 80
-    to_port = 80
+    protocol    = "tcp"
+    from_port   = 80
+    to_port     = 80
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
     from_port = 0
-    to_port = 0
-    protocol = "-1"
+    to_port   = 0
+    protocol  = "-1"
 
     cidr_blocks = ["0.0.0.0/0"]
   }
