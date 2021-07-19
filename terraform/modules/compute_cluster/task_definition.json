@@ -31,6 +31,10 @@
         "value": "${RAILS_MASTER_KEY}"
       },
       {
+        "name": "RAILS_SERVE_STATIC_FILES",
+        "value": "${RAILS_SERVE_STATIC_FILES}"
+      },
+      {
         "name": "RAILS_LOG_TO_STDOUT",
         "value": "${RAILS_LOG_TO_STDOUT}"
       }

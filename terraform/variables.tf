@@ -29,6 +29,11 @@ variable "rails_log_to_stdout" {
   default = true
 }
 
+variable "rails_serve_static_files" {
+  type    = string
+  default = true
+}
+
 variable "public_ssh" {
   type        = string
   description = "The public SSH key to use for ECS"
