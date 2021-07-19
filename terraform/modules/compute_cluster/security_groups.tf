@@ -37,8 +37,8 @@ resource "aws_security_group" "ecs_security_group" {
 
   # Allow traffic from ALB
   ingress {
-    from_port   = 8080
-    to_port     = 8080
+    from_port   = 1024
+    to_port     = 65535
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
 
