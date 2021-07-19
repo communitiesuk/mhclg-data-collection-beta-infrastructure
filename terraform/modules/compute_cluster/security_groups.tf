@@ -27,6 +27,7 @@ resource "aws_security_group" "ecs_security_group" {
   vpc_id      = var.aws_vpc.id
   tags        = var.default_tags
 
+  # SSH
   ingress {
     from_port   = 22
     to_port     = 22
@@ -34,12 +35,11 @@ resource "aws_security_group" "ecs_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  #TODO this should probably just accept connections from the ALB now?
+  # Allow traffic from ALB
   ingress {
-    from_port   = 443
-    to_port     = 443
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
 
     security_groups = [aws_security_group.lb_security_group.id]
   }
