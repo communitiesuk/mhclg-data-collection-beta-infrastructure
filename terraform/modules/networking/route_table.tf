@@ -9,7 +9,8 @@ resource "aws_route_table" "public" {
   tags = var.default_tags
 }
 
-resource "aws_route_table_association" "route_table_association" {
-  subnet_id      = aws_subnet.pub_subnet.id
+resource "aws_route_table_association" "route_table_association_subnet" {
+  count          = var.number_of_public_subnets
+  subnet_id      = aws_subnet.pub_subnet.*.id[count.index]
   route_table_id = aws_route_table.public.id
 }

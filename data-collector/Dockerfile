@@ -32,9 +32,8 @@ RUN yarn install --frozen-lockfile
 # Copy all files to /app (except what is defined in .dockerignore)
 COPY . /app/
 
-# Compile assets and run webpack
-# Run in rails test environment to avoid loading development gems
-RUN RAILS_ENV=test bundle exec rails assets:precompile
+# Compile assets and run webpack. We set a dummy secret key.
+RUN RAILS_ENV=production bundle exec rails SECRET_KEY_BASE=pickasecuretoken assets:precompile
 
 # Cleanup to save space in the production image
 RUN rm -rf node_modules log tmp && \
@@ -66,7 +65,6 @@ ENV GIT_COMMIT_SHA=${GIT_COMMIT_SHA}
 RUN echo ${GIT_COMMIT_SHA} > ./GIT_COMMIT_SHA
 
 ENV PORT=8080
-ENV RAILS_ENV=production
 
 EXPOSE ${PORT}
 

@@ -1,6 +1,6 @@
 resource "aws_db_subnet_group" "postgres_subnet_group" {
   name       = "postgres-subnet-group"
-  subnet_ids = [aws_subnet.pub_subnet.id, aws_subnet.pub2_subnet.id]
+  subnet_ids = var.aws_pub_subnet.*.id
 
   tags = var.default_tags
 }
@@ -22,7 +22,8 @@ resource "aws_db_instance" "postgres" {
   skip_final_snapshot          = true
   performance_insights_enabled = true
   db_subnet_group_name         = aws_db_subnet_group.postgres_subnet_group.name
-  vpc_security_group_ids       = [aws_security_group.rds_security_group.id, aws_security_group.ecs_security_group.id]
+  vpc_security_group_ids       = [aws_security_group.rds_security_group.id, var.ecs_security_group.id]
+  publicly_accessible          = false
 
   tags = var.default_tags
 }
