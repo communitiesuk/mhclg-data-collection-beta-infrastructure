@@ -26,6 +26,12 @@ variable "database_password" {
   sensitive = true
 }
 
+variable "public_ssh" {
+  type        = string
+  description = "The public SSH key to use for ECS"
+  sensitive   = true
+}
+
 variable "rds_postgres_endpoint" {
   description = "Endpoint for the Postgres RDS instance"
 }

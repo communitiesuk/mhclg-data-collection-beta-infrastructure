@@ -27,6 +27,7 @@ jobs:
       TF_VAR_database_username: ${{ secrets.DATABASE_USERNAME }}
       TF_VAR_database_password: ${{ secrets.DATABASE_PASSWORD }}
       TF_VAR_rails_master_key: ${{ secrets.RAILS_MASTER_KEY }}
+      TF_VAR_public_ssh: ${{ secrets.PUBLIC_SSH }}
 
     steps:
 

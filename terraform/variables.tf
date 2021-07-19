@@ -29,6 +29,12 @@ variable "rails_log_to_stdout" {
   default = true
 }
 
+variable "public_ssh" {
+  type        = string
+  description = "The public SSH key to use for ECS"
+  sensitive   = true
+}
+
 variable "database_name" {
   default = "DataCollectorPostgres"
 }

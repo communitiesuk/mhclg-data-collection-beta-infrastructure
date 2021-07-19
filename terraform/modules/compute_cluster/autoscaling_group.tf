@@ -21,8 +21,15 @@ data "template_file" "user_data" {
   }
 }
 
+resource "aws_key_pair" "ecs_key_pair" {
+  key_name   = "ecs-key-pair"
+  public_key = var.public_ssh
+  tags       = var.default_tags
+}
+
 resource "aws_launch_configuration" "ecs_launch_config" {
   name                        = "ecs-launch-config"
+  key_name                    = aws_key_pair.ecs_key_pair.key_name
   image_id                    = data.aws_ami.ecs_optimized.id
   iam_instance_profile        = aws_iam_instance_profile.ecs_agent.name
   security_groups             = [aws_security_group.ecs_security_group.id]
