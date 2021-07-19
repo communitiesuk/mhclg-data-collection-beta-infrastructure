@@ -23,8 +23,7 @@ resource "aws_db_instance" "postgres" {
   performance_insights_enabled = true
   db_subnet_group_name         = aws_db_subnet_group.postgres_subnet_group.name
   vpc_security_group_ids       = [aws_security_group.rds_security_group.id, var.ecs_security_group.id]
-  # TODO lock this down again
-  publicly_accessible          = true
+  publicly_accessible          = false
 
   tags = var.default_tags
 }

@@ -42,7 +42,7 @@ resource "aws_security_group" "ecs_security_group" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
 
-    #security_groups = [aws_security_group.lb_security_group.id]
+    security_groups = [aws_security_group.lb_security_group.id]
   }
 
   egress {

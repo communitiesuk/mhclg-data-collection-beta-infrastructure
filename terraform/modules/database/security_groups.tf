@@ -8,9 +8,8 @@ resource "aws_security_group" "rds_security_group" {
     from_port = 5432
     to_port   = 5432
     protocol  = "tcp"
-    # TODO limit this to just ECS IP range
     cidr_blocks     = ["0.0.0.0/0"]
-    #security_groups = [var.ecs_security_group.id]
+    security_groups = [var.ecs_security_group.id]
   }
 
   egress {
