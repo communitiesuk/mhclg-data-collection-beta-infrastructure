@@ -19,9 +19,6 @@ data "template_file" "task_definition_template" {
   }
 }
 
-# TODO this actually isn't great because we try to create the task definition once here
-# (with latest image which won't exist) and then straight away again in the build pipeline
-# with the actual image tag. We should just do it once if possible.
 resource "aws_ecs_task_definition" "task_definition" {
   family                = "app"
   container_definitions = data.template_file.task_definition_template.rendered
