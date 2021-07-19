@@ -7,13 +7,6 @@ provider "postgresql" {
   password = var.database_password
 }
 
-resource "postgresql_role" "application_role" {
-  name               = var.database_username
-  login              = true
-  password           = var.database_password
-  encrypted_password = true
-}
-
 resource "postgresql_database" "data_collector_db" {
   name              = var.database_name
   owner             = postgresql_role.application_role.name
