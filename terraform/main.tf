@@ -27,3 +27,11 @@ module "database" {
   database_password  = var.database_password
   default_tags       = var.default_tags
 }
+
+module "database_setup" {
+  source                = "./modules/database_setup"
+  rds_postgres_endpoint = module.database.rds_postgres_endpoint
+  database_name         = var.database_name
+  database_username     = var.database_username
+  database_password     = var.database_password
+}
