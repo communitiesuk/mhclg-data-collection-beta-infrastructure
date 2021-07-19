@@ -1,7 +1,6 @@
 # Actually create the database instance within Postgres RDS so you can go from Terraform to pipeline
 # deploy and running in a single shot. This effectively replaces rake db:create
 provider "postgresql" {
-  host     = var.rds_postgres_endpoint
   host     = replace(var.rds_postgres_endpoint, ":5432", "")
   port     = 5432
   username = var.database_username
