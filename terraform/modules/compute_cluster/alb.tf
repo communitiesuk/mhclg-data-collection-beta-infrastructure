@@ -2,14 +2,14 @@ resource "aws_alb_target_group" "alb_target_group" {
   name     = "alb-target-group"
   port     = 8080
   protocol = "HTTP"
-  vpc_id   = aws_vpc.vpc.id
+  vpc_id   = var.aws_vpc.id
 
   tags = var.default_tags
 }
 
 resource "aws_alb" "alb" {
   name            = "alb"
-  subnets         = aws_subnet.pub_subnet.*.id
+  subnets         = var.aws_pub_subnet.*.id
   security_groups = [aws_security_group.lb_security_group.id]
 
   tags = var.default_tags

@@ -4,10 +4,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.49"
     }
-    postgresql = {
-      source  = "cyrilgdn/postgresql"
-      version = "1.13.0"
-    }
   }
 
   # Requires S3 bucket & Dynamo DB to be configured, please see README.md
