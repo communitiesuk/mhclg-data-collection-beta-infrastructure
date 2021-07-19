@@ -8,7 +8,7 @@ data "template_file" "task_definition_template" {
   template = file("${path.module}/task_definition.json")
   vars = {
     REPOSITORY_URL      = replace(aws_ecr_repository.container_repository.repository_url, "https://", "")
-    DB_HOST             = var.rds_postgres_endpoint
+    DB_HOST             = replace(var.rds_postgres_endpoint, ":5432", "")
     DB_DATABASE         = var.database_name
     DB_USERNAME         = var.database_username
     DB_PASSWORD         = var.database_password
