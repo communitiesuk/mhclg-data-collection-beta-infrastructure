@@ -9,7 +9,6 @@ provider "postgresql" {
 
 resource "postgresql_database" "data_collector_db" {
   name              = var.database_name
-  owner             = postgresql_role.application_role.name
   template          = "template0"
   lc_collate        = "C"
   connection_limit  = -1
