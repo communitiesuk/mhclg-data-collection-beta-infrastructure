@@ -15,7 +15,7 @@ resource "aws_ecr_lifecycle_policy" "image_expiration_policy" {
               "rulePriority": 1,
               "description": "Keep latest 10 images only",
               "selection": {
-                  "tagStatus": "tagged",
+                  "tagStatus": "tagged" | "any",
                   "countType": "imageCountMoreThan",
                   "countNumber": 10
               },
