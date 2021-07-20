@@ -93,15 +93,15 @@ jobs:
 
 
     steps:
-      - name: Create DB
-        run: |
-          bundle exec rake db:prepare
       - name: Set up Ruby
         # Uses .ruby-version file to determine ruby version
         uses: ruby/setup-ruby@v1
         with:
           # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
+      - name: Create DB
+        run: |
+          bundle exec rake db:prepare
       - name: Run tests
         run: |
             bundle exec rake spec
