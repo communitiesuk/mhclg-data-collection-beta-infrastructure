@@ -109,6 +109,11 @@ jobs:
         run: |
           bundle exec rake db:prepare
 
+      - name: Compile Assets
+        working-directory: ./data-collector
+        run: |
+          bundle exec rake assets:precompile
+
       - name: Run tests
         working-directory: ./data-collector
         run: |
