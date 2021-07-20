@@ -95,12 +95,12 @@ jobs:
 
     steps:
       - name: Set up Ruby
-        working-directory: ./data-collector
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
           # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
+        working-directory: ./data-collector
       - name: Create DB
         working-directory: ./data-collector
         run: |
