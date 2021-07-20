@@ -67,9 +67,9 @@ jobs:
       postgres:
         image: postgres:13.3
         env:
-          POSTGRES_PASSWORD=password
-          POSTGRES_USER=postgres
-          POSTGRES_DB=data_collector
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+          POSTGRES_DB: data_collector
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -112,6 +112,7 @@ jobs:
     environment: 'Beta - Production'
     needs:
       - terraform
+      - test
     timeout-minutes: 30
     env:
       AWS_REGION: eu-west-2
