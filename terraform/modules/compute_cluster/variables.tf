@@ -41,6 +41,11 @@ variable "rails_master_key" {
   sensitive = true
 }
 
+variable "rails_serve_static_files" {
+  type    = string
+  default = true
+}
+
 variable "rails_log_to_stdout" {
   description = "Whether Rails should log to STDOUT or not"
 }
