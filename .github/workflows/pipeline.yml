@@ -106,7 +106,7 @@ jobs:
       - name: Run tests
         working-directory: ./data-collector
         run: |
-            bundle exec rake spec
+          bundle exec rspec
 
   deploy:
     name: Deploy
