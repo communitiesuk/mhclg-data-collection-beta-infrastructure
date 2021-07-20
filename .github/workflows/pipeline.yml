@@ -95,7 +95,7 @@ jobs:
     steps:
       - name: Create DB
         run: |
-          bin/rails db:prepare
+          bundle exec rake db:prepare
       - name: Set up Ruby
         # Uses .ruby-version file to determine ruby version
         uses: ruby/setup-ruby@v1
