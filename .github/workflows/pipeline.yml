@@ -61,6 +61,7 @@ jobs:
       run: terraform apply -auto-approve
 
   test:
+    name: Test
     runs-on: ubuntu-latest
 
     services:
@@ -94,19 +95,20 @@ jobs:
 
     steps:
       - name: Set up Ruby
+        working-directory: ./data-collector
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
           # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
-      # - name: Create DB
-      #   working-directory: ./data-collector
-      #   run: |
-      #     bundle exec rake db:prepare
+      - name: Create DB
+        working-directory: ./data-collector
+        run: |
+          bundle exec rake db:prepare
       - name: Run tests
         working-directory: ./data-collector
         run: |
-          bundle exec rspec
+          bundle exec rake spec
 
   deploy:
     name: Deploy
