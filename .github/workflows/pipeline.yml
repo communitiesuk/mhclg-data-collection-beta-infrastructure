@@ -60,6 +60,50 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
 
+  test:
+    services:
+      postgres:
+        image: postgres:13.3
+        env:
+          POSTGRES_PASSWORD=password
+          POSTGRES_USER=postgres
+          POSTGRES_DB=data_collector
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        # tmpfs makes DB faster by using RAM
+        options: >-
+          --mount type=tmpfs,destination=/var/lib/postgresql/data
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      RAILS_ENV: test
+      GEMFILE_RUBY_VERSION: 3.0.0
+      DB_HOST: localhost
+      DB_DATABASE: data_collector
+      DB_USERNAME: postgres
+      DB_PASSWORD: password
+
+      # Rails verifies the time zone in DB is the same as the time zone of the Rails app
+      TZ: "Europe/London"
+
+
+    steps:
+      - name: Create DB
+        run: |
+          bin/rails db:prepare
+      - name: Set up Ruby
+        # Uses .ruby-version file to determine ruby version
+        uses: ruby/setup-ruby@v1
+        with:
+          # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: true
+      - name: Run tests
+        run: |
+            bundle exec rake spec
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
