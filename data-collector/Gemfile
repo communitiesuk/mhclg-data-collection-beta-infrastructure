@@ -43,6 +43,7 @@ group :development do
   gem "rubocop-performance", require: false
   gem "rubocop-rails"
   gem "scss_lint-govuk"
+  gem "overcommit", ">= 0.37.0", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

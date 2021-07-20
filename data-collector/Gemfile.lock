@@ -144,6 +144,7 @@ GEM
       deep_merge (~> 1.2.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    iniparse (1.5.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     listen (3.5.1)
@@ -164,6 +165,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
+    overcommit (0.58.0)
+      childprocess (>= 0.6.3, < 5)
+      iniparse (~> 1.4)
+      rexml (~> 3.2)
     parallel (1.20.1)
     parser (3.0.2.0)
       ast (~> 2.4.1)
@@ -305,6 +310,7 @@ DEPENDENCIES
   govuk_design_system_formbuilder
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  overcommit (>= 0.37.0)
   pg (~> 1.1)
   pry-byebug
   puma (~> 5.0)
