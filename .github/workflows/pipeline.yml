@@ -63,6 +63,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    working-directory: ./data-collector
 
     services:
       postgres:
@@ -104,12 +105,10 @@ jobs:
           bundler-cache: true
 
       - name: Create DB
-        working-directory: ./data-collector
         run: |
           bundle exec rake db:prepare
 
       - name: Run tests
-        working-directory: ./data-collector
         run: |
           bundle exec rake spec
 
