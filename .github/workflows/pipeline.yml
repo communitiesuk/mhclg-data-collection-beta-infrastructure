@@ -61,6 +61,8 @@ jobs:
       run: terraform apply -auto-approve
 
   test:
+    runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres:13.3
