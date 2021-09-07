@@ -1,4 +1,4 @@
-# MHCLG Data Collection Beta
+# MHCLG Data Collection Beta Infrastructure
 
 This beta aims to provide a web application for collecting Case Level Letting and Sales records for Social Housing in England via form, bulk upload and API submission. It is intended for use by housing officers from local authorities and housing providers and associations.
 
@@ -11,12 +11,10 @@ All code can be found in `/terraform`
 
 ## Web App
 
-The main codebase is a Ruby on Rails app that can be found in [data-collector](data-collector)
+The main codebase is a Ruby on Rails app that can be found in [the application repo](https://github.com/communitiesuk/mhclg-data-collection-beta)
 
 ## CI/CD
 
 When a commit is made to `main` the following Github action jobs are triggered:
 
 1. Terraform - checks Infrastructure state and makes any required changes
-2. Test - runs automated tests (Capybara/RSpec)
-3. Deploy - builds a docker image and deploys it to the ECR registry (created by terraform). Then updates the ECS task definition (created by terraform).
